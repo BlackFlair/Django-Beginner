@@ -3,4 +3,8 @@ from .models import StudentDetail
 
 # Register your models here.
 
-admin.site.register(StudentDetail)
+
+class studentDetailAdmin(admin.ModelAdmin):
+    fields = ['rollNo', 'name', 'age', 'course', 'phone']
+
+admin.site.register(StudentDetail, studentDetailAdmin)
