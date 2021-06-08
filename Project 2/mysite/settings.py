@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'StudentData',
 ]
 
 MIDDLEWARE = [
@@ -51,10 +52,15 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'mysite.urls'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'DIRS': [os.path.join(BASE_DIR,'templates'),
+                 os.path.join(BASE_DIR, 'static')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,6 +85,17 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default' : {
+#         'ENGINE':'django.db.backends.mysql',
+#         'NAME' : 'studentdetails',
+#         'USER' : 'root',
+#         'PASSWORD' : '',
+#         'HOST' : '127.0.0.1',
+#         'PORT' : '3306',
+#     }
+# }
 
 
 # Password validation
