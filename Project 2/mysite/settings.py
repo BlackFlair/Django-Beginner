@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
+import jinja2
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -57,10 +58,16 @@ STATICFILES_DIRS = [
 ]
 
 TEMPLATES = [
+    # {
+    #     'BACKEND': 'django.template.backends.jinja2.jinja2',
+    #     'DIRS': [],
+    #     # 'APP_DIRS': True,
+    # },
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR,'templates'),
-                 os.path.join(BASE_DIR, 'static')],
+                 os.path.join(BASE_DIR, 'static'),
+                 os.path.join(BASE_DIR, 'StudentData/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,6 +78,7 @@ TEMPLATES = [
             ],
         },
     },
+
 ]
 
 WSGI_APPLICATION = 'mysite.wsgi.application'

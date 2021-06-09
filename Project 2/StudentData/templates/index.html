@@ -1,0 +1,16 @@
+{%extends 'headder.html'%}
+
+{%block content%}
+    {%if studentList%}
+        {%for student in studentList%}
+            <ul>
+                <li>Roll : {{student.rollNo}}</li>
+                <li>Name : {{student.name}}</li>
+                <li>Course : {{student.course}}</li>
+                <li>Phone : {{student.phone}}</li>
+            </ul><br>
+        {%endfor%}
+    {%else%}
+        <h1>No data found.</h1>
+    {%endif%}
+{%endblock%}
