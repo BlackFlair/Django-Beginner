@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View</title>
+
+    <style>
+        td,th{
+            padding:0 10px 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <form action="/display/" method="post">
+        {% csrf_token %}
+        <input placeholder="Search By Name" name="search">
+        <input type="submit" value="Search" name="searchBtn">
+        <br><br>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Alternate Phone</th>
+                <th>Email</th>
+                <th>Address</th>
+            </tr>
+            {%if phonebook%}
+                {%for i in phonebook%}
+                    <tr>
+                        <td>{{i.name}}</td>
+                        <td>{{i.phone}}</td>
+                        <td>{{i.altPhone}}</td>
+                        <td>{{i.email}}</td>
+                        <td>{{i.address}}</td>
+                        <td><input type="hidden" name="_edit" value="{{i.id}}"><button name="editBtn" value="Edit">Edit</button></input></td>
+                        <td><input type="hidden" name="delete" value="{{i.id}}"><button name="deleteBtn" value="Delete">Delete</button></input></td>
+                    </tr>
+                {%endfor%}
+            {%endif%}<input type="hidden" name="edit" value="{{i.id}}">
+        </table>
+    </form>
+</body>
+</html>
